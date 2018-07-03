@@ -1,0 +1,23 @@
+{
+  "user": "Southclaws",
+  "repo": "pawn-env",
+  "entry": "test.pwn",
+  "output": "test/gamemodes/test.amx",
+  "dependencies": ["Southclaws/samp-stdlib"],
+  "dev_dependencies": ["pawn-lang/YSI-Includes"],
+  "runtime": {
+    "plugins": ["Southclaws/pawn-env"]
+  },
+  "resources": [
+    {
+      "name": "env.so",
+      "archive": false,
+      "platform": "linux"
+    },
+    {
+      "name": "env.dll",
+      "archive": false,
+      "platform": "windows"
+    }
+  ]
+}
