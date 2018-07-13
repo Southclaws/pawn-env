@@ -12,8 +12,9 @@ cell Natives::GetEnv(AMX* amx, cell* params)
 
     amx_GetCString(amx, params[1], key);
     result = GetEnvironmentVariableA(key, value, length);
-    result += 1; // terminator
-    amx_SetCString(amx, params[2], value, result);
+	if (result > 0) {
+		amx_SetCString(amx, params[2], value, result + 1);
+	}
 
     delete[] value;
 
@@ -31,9 +32,8 @@ cell Natives::GetEnv(AMX* amx, cell* params)
     amx_GetCString(amx, params[1], key);
     const char* value = getenv(key);
     if (value != nullptr) {
-        result = strlen(value) + 1;
-        logprintf("value: '%s' len: %d", value, result);
-        amx_SetCString(amx, params[2], value, result);
+        result = strlen(value);
+        amx_SetCString(amx, params[2], value, result + 1);
     }
 
     return result;
