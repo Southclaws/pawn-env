@@ -33,7 +33,7 @@ cell Natives::GetEnv(AMX* amx, cell* params)
     const char* value = getenv(key);
     if (value != nullptr) {
         result = strlen(value);
-        amx_SetCString(amx, params[2], value, result + 1);
+        amx_SetCString(amx, params[2], value, length);
     }
 
     return result;
